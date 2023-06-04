@@ -1,39 +1,3 @@
-<?php
-include("../config/connexion.php");
-session_start();
-error_reporting(0);
-//$msg = "";
-
-if(isset($_POST['save']))
-{
-    $nom_c=$_POST['nom_conducteur'];
-    $prenom_c=$_POST['prenom_conducteur'];
-    $qte=$_POST['qte'];
-    $date_l=$_POST['date_ach'];
-    $cd_emb=$_POST['code_ach_emb'];
-    $num_camion=$_POST['num_camion'];
-
-    $cod_id=strtoupper(substr($nom_c,0,2).substr($prenom_c,0,2));
-
-    //echo $cod_id;
-
-    
-    $req=$bdd->query("INSERT INTO `spatb12`(`id_lettre`, `nom_transporteur`, `prenom_transporteur`, `qte_achemine`, `date_achemine`)
-            VALUES ('$cod_id','$nom_c','$prenom_c','$qte','$date_l')");
-
-    // if($req){
-    //    header("location:spapg12.html");
-
-    // }
-
-
-}
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -45,7 +9,7 @@ if(isset($_POST['save']))
     <title>page lettre voiture</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="spapg12.php" method="post">
         <!-- <div class="container p-5 my-5 bg-secondary border">bonjour</div>
         <div class="container p-5 my-5 border">hhh</div>
         <div class="container p-5 my-5 bg-dark text-white">jjj</div>
@@ -82,7 +46,7 @@ if(isset($_POST['save']))
                             <input type="text" class="form-control" placeholder="N° du camion" name="num_camion">
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit" name="save" onclick="" >Save</button>
+                    <button class="btn btn-primary" type="submit" name="save" onclick="updatePageWithAjax()" >Save</button>
 
                 </div>
     
@@ -104,29 +68,22 @@ if(isset($_POST['save']))
                     </tr>
                     </thead>
                     <tbody>
-
-                        <?php 
-
-                            $sql=$bdd->query("SELECT * FROM `spatb12`");
-                            while($aff=$sql->fetch()){ 
-                        ?>                            
-                            <tr>
-                                <td><?php echo $aff['id_lettre'] ; ?></td>
-                                <td><?php echo $aff['nom_transporteur'].' '.$aff['prenom_transporteur'] ; ?></td>
-                                <td><?php echo $aff['qte_achemine'] ; ?></td>
-                                <td><?php echo $aff['date_achemine'] ; ?></td>
-                                <td><?php echo $aff['id_emballage'] ; ?></td>
-                                <td><?php echo $aff['id_camion'] ; ?></td>
-                            </tr>
-                            <!-- <tr>
-                                <td>joel</td>
-                                <td>Koffi</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr> -->
-                        <?php } ?>
+                        <tr>
+                            <td>Koffi</td>
+                            <td>konan</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>joel</td>
+                            <td>Koffi</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

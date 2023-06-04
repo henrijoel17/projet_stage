@@ -15,18 +15,9 @@ if(isset($_POST['save']))
 
     $cod_id=strtoupper(substr($nom_c,0,2).substr($prenom_c,0,2));
 
-    //echo $cod_id;
-
-    
     $req=$bdd->query("INSERT INTO `spatb12`(`id_lettre`, `nom_transporteur`, `prenom_transporteur`, `qte_achemine`, `date_achemine`)
             VALUES ('$cod_id','$nom_c','$prenom_c','$qte','$date_l')");
-
-    // if($req){
-    //    header("location:spapg12.html");
-
-    // }
-
-
+    
 }
 
 
@@ -101,6 +92,7 @@ if(isset($_POST['save']))
                         <th>date acheminement</th>
                         <th>code de l'emballage</th>
                         <th>N° du camion</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -117,6 +109,21 @@ if(isset($_POST['save']))
                                 <td><?php echo $aff['date_achemine'] ; ?></td>
                                 <td><?php echo $aff['id_emballage'] ; ?></td>
                                 <td><?php echo $aff['id_camion'] ; ?></td>
+                                <td>
+                                    <div class="dropdown dropend">
+                                       <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Action -->
+                                        <!-- <div class="row">
+                                            <div class="col-md-6"><button type="button" name="modifier" class="btn-sm btn-primary" data-bs-toggle="modal" data-ts-target="#modifletre">Modifier</button></div>
+                                            <div class="col-md-6"> <button type="button" name="supprimer" class="btn-sm btn-primary" data-bs-toggle="modal" data-ts-target="#modifletre">supprimer</button></div>
+                                        </div>   -->
+
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary"><a href="" class="text-white " style="text-decoration:none;">modifier</a></button>
+                                            <button type="button" class="btn btn-primary"><a href="" class="text-white" style="text-decoration:none;">suppimer</a></button>
+                                        </div>
+                                        
+                                    </div> 
+                                </td>
                             </tr>
                             <!-- <tr>
                                 <td>joel</td>

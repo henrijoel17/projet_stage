@@ -36,6 +36,7 @@ function updatePageWithAjax() {
   });
 }
 
+
 // $(document).ready(function() {
 //   updatePageWithAjax();
 // });

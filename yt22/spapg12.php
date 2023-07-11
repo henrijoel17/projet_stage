@@ -15,8 +15,34 @@ if(isset($_POST['save']))
 
     $cod_id=strtoupper(substr($nom_c,0,2).substr($prenom_c,0,2));
 
+    if($nom_c==null||$prenom_c==null||$qte==null||$date_l==null||$cd_emb==null||$num_camion==null){
+        $res=[
+            'status'=> 422,
+            'message'=>'All fields are mandatory'
+        ];
+        echo json_encode($res);
+        return false; 
+    }
+
     $req=$bdd->query("INSERT INTO `spatb12`(`id_lettre`, `nom_transporteur`, `prenom_transporteur`, `qte_achemine`, `date_achemine`)
             VALUES ('$cod_id','$nom_c','$prenom_c','$qte','$date_l')");
+
+    if($req){
+        $res=[
+            'status'=> 200,
+            'message'=>'Informations ajoutées avec succes'
+        ];
+        echo json_encode($res);
+        return false;
+
+    }else{
+        $res=[
+            'status'=> 500,
+            'message'=>'Error'
+        ];
+        echo json_encode($res);
+        return false;
+    }
     
 }
 
@@ -118,13 +144,78 @@ if(isset($_POST['save']))
                                         </div>   -->
 
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary"><a href="" class="text-white " style="text-decoration:none;">modifier</a></button>
-                                            <button type="button" class="btn btn-primary"><a href="" class="text-white" style="text-decoration:none;">suppimer</a></button>
+                                            <button type="button" class="btn btn-primary"><a href="" class="text-white " style="text-decoration:none;" 
+                                            data-bs-toggle="modal" data-bs-target="#save_information" >modifier</a>
+                                            </button>
+                                            <button type="button" class="btn btn-primary"><a href="spapg12.php?lettre_id=<?php echo $aff['id_lettre'] ; ?>" class="text-white" style="text-decoration:none;">suppimer</a></button>
                                         </div>
                                         
                                     </div> 
                                 </td>
                             </tr>
+
+
+                            <!-- The Modal -->
+                            <div class="modal" id="save_information">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modifier informations</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    
+                                    <div class="form-group">
+                                        <div class="container">
+                                                <div class="mb-3">
+                                                    <div>Nom du conducteur</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez votre nom" name="nom_conducteur">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div> Prenom du conducteur</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez le prenom du conducteur" name="prenom_conducteur" >
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div>Quantité acheminée</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez la quantité" name="qte">
+                                                </div>
+                                            
+                                            
+                                                <div class="mb-3">
+                                                    <div>date d'acheminement</div>
+                                                    <input type="date" class="form-control" placeholder="" name="date_ach">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div>Code d'emballage</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez le code d'emballage" name="code_ach_emb" >
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div>N° du camion</div>
+                                                    <input type="text" class="form-control" placeholder="N° du camion" name="num_camion">
+                                                </div>
+                                                    
+                                            
+
+                                        </div>
+    
+
+
+             </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit" name="save" onclick="" >Save changes</button>
+                                </div>
+
+                                </div>
+                            </div>
+                            </div>
                             <!-- <tr>
                                 <td>joel</td>
                                 <td>Koffi</td>
@@ -158,5 +249,31 @@ if(isset($_POST['save']))
 <script src="../css/js-b5/bootstrap.bundle.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="ajax_load.js"></script>
+<script>
+$(document).on('submit','save_information',function save_information(e) {
+  e.preventDefault();
+
+  var formData = new FormData(this);
+  formData.append("save_information",true);
+  $.ajax({
+    type: "POST",
+    url: "ajax_pg12.php",
+    data: formData,
+    processData:false,
+    contentType:false,
+    // dataType: "dataType",
+    success: function (response) {
+    var res =jQuery.parseJSON(response);
+    if(res.status==422){
+        $('#errorMessage').removeClass('d-none');
+        $('#errorMessage').text(res.message);
+    }else if(res.status==200){
+
+    }
+    }
+  });
+})
+
+</script>
 </body>
 </html>

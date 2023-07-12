@@ -3,7 +3,7 @@
 
 
 ?>
-<body>
+
 <form action="" method="get">
     <div class="sidebar" id="sidebar">
                 <div class="sidebar-inner slimscroll">
@@ -15,7 +15,7 @@
                                 <ul class="submenu_class" style="display: none;">
                                     <li><a href="all-booking.html"> All Booking </a></li>
                                     <li><a href="edit-booking.html"> Edit Booking </a></li>
-                                    <li><a href="page.php?page=cont"> Lettre voiture </a></li>
+                                    <li><a href="page_spapg12.php"> Lettre voiture </a></li>
                                 </ul>
                             </li>
                             <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>
@@ -153,4 +153,3 @@
 
 
 
-</body>

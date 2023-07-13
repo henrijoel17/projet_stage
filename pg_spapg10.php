@@ -7,7 +7,7 @@ include("config/connexion.php");
 
 if(isset($_GET['save']))
 {
-    $nom_type_contrat=$_GET['nom_type_contrat'];
+    $nom_produit=$_GET['nom_produit'];
 
     // if($nom_c==null||$prenom_c==null||$qte==null||$date_l==null||$cd_emb==null||$num_camion==null){
     //     $res=[
@@ -18,7 +18,7 @@ if(isset($_GET['save']))
     //     return false; 
     // }
 
-    $req=$bdd->query("INSERT INTO `spatb05`( `nom_type_contrat`) VALUES ('$nom_type_contrat');");
+    $req=$bdd->query("INSERT INTO `spatb10`( `nom_produit`) VALUES ('$nom_produit');");
 
     if($req){
 
@@ -57,7 +57,7 @@ if(isset($_GET['save']))
 				<div class="page-header">
 					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title mt-5">Ajouter un type de contrat</h3> </div>
+							<h3 class="page-title mt-5">Ajouter un produit</h3> </div>
 					</div>
 				</div>
 				<div class="row">
@@ -66,8 +66,8 @@ if(isset($_GET['save']))
                                
                                 <div class="col-md-4">
 									<div class="form-group">
-										<label>Nom type contrat</label>
-										<input class="form-control" type="text" placeholder="Entrez le type du contrat" name="nom_pays">
+										<label>Nom du Produit</label>
+										<input class="form-control" type="text" placeholder="Entrez le produit" name="nom_modele">
                                     </div>
 								</div>
                             
@@ -84,7 +84,7 @@ if(isset($_GET['save']))
 				<div class="page-header">
 					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title mt-5">Liste des type contrat</h3> </div>
+							<h3 class="page-title mt-5">Liste des produits </h3> </div>
 					</div>
 				</div>
 				<div class="row">
@@ -95,8 +95,8 @@ if(isset($_GET['save']))
 									<table class="datatable table table-stripped table table-hover table-center mb-0">
 										<thead>
 											<tr>
-                                                <th>ID type contrat</th>
-                                                <th>nom type contrat</th>
+                                                <th>ID produit</th>
+                                                <th>nom produit</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
@@ -104,15 +104,15 @@ if(isset($_GET['save']))
 
                                         <?php 
 
-                                            $sql=$bdd->query("SELECT * FROM `spatb05`");
+                                            $sql=$bdd->query("SELECT * FROM `spatb10`");
                                             while($aff=$sql->fetch()){ 
                                             ?>  
 											<tr>
-                                            <td><?php echo $aff['id_type_contrat'] ; ?></td>
-                                            <td><?php echo $aff['nom_type_contrat'] ; ?></td>
+                                            <td><?php echo $aff['id_produit'] ; ?></td>
+                                            <td><?php echo $aff['nom_produit'] ; ?></td>
 												<td class="text-right">
 													<div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-booking.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="delete_spapg05.php?delete_05=<?php echo $aff['id_pays'] ; ?>" ><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
+														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-booking.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="delete_spapg10.php?delete_10=<?php echo $aff['id_produit'] ; ?>" ><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
 													</div>
 												</td>
 											</tr>

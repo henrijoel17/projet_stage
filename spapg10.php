@@ -6,12 +6,12 @@ error_reporting(0);
 
 if(isset($_POST['save']))
 {
-    $nom_type_contrat=$_POST['nom_type_contrat'];
+    $nom_produit=$_POST['nom_produit'];
    
 
-    $cod_id=strtoupper(substr($nom_type_contrat,0,2));
+    $cod_id=strtoupper(substr($nom_produit,0,2));
 
-    if($nom_type_contrat==null){
+    if($nom_produit==null){
         $res=[
             'status'=> 422,
             'message'=>'All fields are mandatory'
@@ -20,8 +20,8 @@ if(isset($_POST['save']))
         return false; 
     }
 
-    $req=$bdd->query("INSERT INTO `spatb05`(`id_type_contrat`, `nom_type_contrat`)
-            VALUES ('$cod_id','$nom_type_contrat')");
+    $req=$bdd->query("INSERT INTO `spatb12`(`id_produit`, `nom_produit`)
+            VALUES ('$cod_id','$nom_produit')");
 
     if($req){
         $res=[
@@ -55,7 +55,7 @@ if(isset($_POST['save']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/css_b5/bootstrap.min.css">
-    <title>page type contrat</title>
+    <title>page produit </title>
 </head>
 <body>
     <form action="" method="post">
@@ -69,12 +69,12 @@ if(isset($_POST['save']))
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
-                            <div>Nom du contrat</div>
+                            <div>Nom Produit</div>
                             <input type="text" class="form-control" placeholder="Entrez votre nom" name="nom_conducteur">
                         </div>
-                        
-                        
+                       
                     </div>
+                    
                     <button class="btn btn-primary" type="submit" name="save" onclick="" >Save</button>
 
                 </div>
@@ -88,23 +88,22 @@ if(isset($_POST['save']))
                 <table class=" table table-hover table-bordered table-responsive ">
                     <thead class="table-dark">
                     <tr>
-                        <th>code type contrat</th>
-                        <th>nom du contrat</th>
+                        <th>Nom Produit</th>
                        
-                        <th>Actions</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
 
                         <?php 
 
-                            $sql=$bdd->query("SELECT * FROM `spatb05`");
+                            $sql=$bdd->query("SELECT * FROM `spatb10`");
                             while($aff=$sql->fetch()){ 
                         ?>                            
                             <tr>
-                                <td><?php echo $aff['id_type_contrat'] ; ?></td>
+                                <td><?php echo $aff['id_produit'] ; ?></td>
                                
-                                <td><?php echo $aff['nom_type_contrat'] ; ?></td>
+                                <td><?php echo $aff['nom_produit'] ; ?></td>
                                
                                 <td>
                                     <div class="dropdown dropend">
@@ -118,7 +117,7 @@ if(isset($_POST['save']))
                                             <button type="button" class="btn btn-primary"><a href="" class="text-white " style="text-decoration:none;" 
                                             data-bs-toggle="modal" data-bs-target="#save_information" >modifier</a>
                                             </button>
-                                            <button type="button" class="btn btn-primary"><a href="spapg05.php?type_contrat_id=<?php echo $aff['id_type_contrat'] ; ?>" class="text-white" style="text-decoration:none;">supprimer</a></button>
+                                            <button type="button" class="btn btn-primary"><a href="spapg10.php?produit_id=<?php echo $aff['id_produit'] ; ?>" class="text-white" style="text-decoration:none;">supprimer</a></button>
                                         </div>
                                         
                                     </div> 
@@ -133,7 +132,7 @@ if(isset($_POST['save']))
 
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Modifier les informations</h4>
+                                    <h4 class="modal-title">Modifier informations</h4>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
 
@@ -143,9 +142,11 @@ if(isset($_POST['save']))
                                     <div class="form-group">
                                         <div class="container">
                                                 <div class="mb-3">
-                                                    <div>Nom du contrat</div>
+                                                    <div>Nom produit </div>
                                                     <input type="text" class="form-control" placeholder="Entrez votre nom" name="nom_conducteur">
                                                 </div>
+                                               
+
                                         </div>
     
 

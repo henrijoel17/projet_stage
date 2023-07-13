@@ -1,20 +1,19 @@
 <?php
-session_start();
-error_reporting(0);
+
 include("config/connexion.php");
 
 //$supp_biblio = $_GET['delete_biblio'];
-if(isset( $_POST['delete']))
+if(isset( $_GET['delete_12']))
 {
-    $del_lettre = $_POST['delete'];
+    $del_lettre = $_GET['delete_12'];
 
-    $stmt = $bdd->prepare("DELETE FROM `spatb12` WHERE `id_lettre` = '$del_lettre'");
+    $stmt = $bdd->prepare("DELETE FROM `spatb12` WHERE `id_lettre` = '$del_lettre' ;");
     //$stmt->bindParam(':del_lettre', $del_lettre);
     $stmt->execute();
     
-    if ($stmt) {
+    if ($stmt->rowCount() > 0) {
         // Redirection après suppression réussie
-        header("Location: page_spapg12.php");
+        header("Location:page_spapg12.php");
     } else {
         ?>
                 <script>

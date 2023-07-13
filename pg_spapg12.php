@@ -4,16 +4,16 @@ session_start();
 error_reporting(0);
 //$msg = "";
 
-if(isset($_POST['save']))
+if(isset($_GET['save']))
 {
-    $nom_c=$_POST['nom_conducteur'];
-    $prenom_c=$_POST['prenom_conducteur'];
-    $qte=$_POST['qte'];
-    $date_l=$_POST['date_ach'];
-    $cd_emb=$_POST['code_ach_emb'];
-    $num_camion=$_POST['num_camion'];
-    $cb_camion=$_POST['cb_camion'];
-    $emb = $_POST['cb_emballage'];
+    $nom_c=$_GET['nom_conducteur'];
+    $prenom_c=$_GET['prenom_conducteur'];
+    $qte=$_GET['qte'];
+    $date_l=$_GET['date_ach'];
+    $cd_emb=$_GET['code_ach_emb'];
+    $num_camion=$_GET['num_camion'];
+    $cb_camion=$_GET['cb_camion'];
+    $emb = $_GET['cb_emballage'];
 
     $opt=$bdd->query("SELECT * FROM `spatb18` WHERE `nom_emballage`='$emb'");
     $recup=$opt->fetch();
@@ -65,7 +65,7 @@ if(isset($_POST['save']))
 ?>
 
 <div class="page-wrapper">
-    <form action="" method="post">
+    <form action="" method="get">
 			<div class="content container-fluid">
 				<div class="page-header">
 					<div class="row align-items-center">
@@ -186,7 +186,7 @@ if(isset($_POST['save']))
                                             <td><?php echo $aff['id_camion'] ; ?></td>
 												<td class="text-right">
 													<div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#update_information"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="delete_spapg12.php?delete=<?php echo $aff['id_lettre'] ; ?>" ><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
+														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#update_information"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="delete_spapg12.php?delete_12=<?php echo $aff['id_lettre'] ; ?>" ><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
 													</div>
 												</td>
 											</tr>

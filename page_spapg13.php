@@ -1,6 +1,6 @@
 <?php
 
-//$b="contenu.php";
+
 include("config/connexion.php");
 include("entete.php");
 include("verticale.php");
@@ -13,7 +13,7 @@ include("verticale.php");
 //     }
 // }
 //include("contenu.php");
-include("pg_spapg12.php");
+include("pg_spapg13.php");
 include("footer.php");
 
 ?>

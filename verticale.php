@@ -11,11 +11,10 @@
                         <ul>
                             <li> <a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
                             <li class="list-divider"></li>
-                            <li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span> Booking </span> <span class="menu-arrow"></span></a>
+                            <li class="submenu"> <a href="#"><i class="fas fa-table"></i> <span> Toute les Tables </span> <span class="menu-arrow"></span></a>
                                 <ul class="submenu_class" style="display: none;">
-                                    <li><a href="all-booking.html"> All Booking </a></li>
-                                    <li><a href="edit-booking.html"> Edit Booking </a></li>
                                     <li><a href="page_spapg12.php"> Lettre voiture </a></li>
+                                    <li><a href="page_spapg13.php"> Pays </a></li>
                                 </ul>
                             </li>
                             <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>

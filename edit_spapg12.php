@@ -3,7 +3,7 @@ include("config/connexion.php");
 session_start();
 error_reporting(0);
 $update = $_POST['utpdate'];
-$rec = $bdd->query("SELECT * FROM `bibliotheque` WHERE `id_biblio`='$update_biblio'");
+$rec = $bdd->query("SELECT * FROM `bibliotheque` WHERE `id_biblio`=''");
 $recup = $rec->fetch();
 //$msg = "";
 

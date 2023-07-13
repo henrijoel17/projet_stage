@@ -1,7 +1,7 @@
 <?php
-include("config/connexion.php");
 session_start();
 error_reporting(0);
+include("config/connexion.php");
 
 //$supp_biblio = $_GET['delete_biblio'];
 if(isset( $_POST['delete']))

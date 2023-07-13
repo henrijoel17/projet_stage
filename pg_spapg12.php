@@ -186,7 +186,7 @@ if(isset($_POST['save']))
                                             <td><?php echo $aff['id_camion'] ; ?></td>
 												<td class="text-right">
 													<div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-booking.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="delete_spapg12.php?delete=<?php echo $aff['id_lettre'] ; ?>" ><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
+														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#update_information"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="delete_spapg12.php?delete=<?php echo $aff['id_lettre'] ; ?>" ><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
 													</div>
 												</td>
 											</tr>
@@ -201,5 +201,67 @@ if(isset($_POST['save']))
 				</div>
 				<button type="button" class="btn btn-primary buttonedit1">Create Customer</button>
 			</div>
+
+            <!-- The Modal -->
+                            <div class="modal" id="update_information">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modifier informations</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    
+                                    <div class="form-group">
+                                        <div class="container">
+                                                <div class="mb-3">
+                                                    <div>Nom du conducteur</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez votre nom" name="nom_conducteur">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div> Prenom du conducteur</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez le prenom du conducteur" name="prenom_conducteur" >
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div>Quantité acheminée</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez la quantité" name="qte">
+                                                </div>
+                                            
+                                            
+                                                <div class="mb-3">
+                                                    <div>date d'acheminement</div>
+                                                    <input type="date" class="form-control" placeholder="" name="date_ach">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div>Code d'emballage</div>
+                                                    <input type="text" class="form-control" placeholder="Entrez le code d'emballage" name="code_ach_emb" >
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div>N° du camion</div>
+                                                    <input type="text" class="form-control" placeholder="N° du camion" name="num_camion">
+                                                </div>
+                                                    
+                                            
+
+                                        </div>
+    
+
+
+             </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit" name="save" onclick="" >Save changes</button>
+                                </div>
+
+                                </div>
+                            </div>
+                            </div>
     </form>
 </div>
